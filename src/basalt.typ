@@ -25,15 +25,19 @@
 }
 
 #let note(..sink) = {
-  let meta-dict = sink.named()
-  let meta = metadata(meta-dict)
-
-  return [
-    #meta #note-label
-    #meta #metadata-label(meta-dict)
-    #meta #label("note")
-  ]
+  return sink.named()
 }
+
+#let note-meta(note) = [
+  #return note()
+]
+
+#let note-anchor(note) = [
+  #let meta = metadata(note())
+  #meta #metadata-label(note())
+  #meta #note-label
+  #meta #label("note")
+]
 
 #let note-query(processor, ..sink) = context {
   let targets = sink.named()
