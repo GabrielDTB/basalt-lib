@@ -60,7 +60,7 @@
 
 #let xlink(body, ..sink) = note-query(..sink.named(), notes => {
   if notes.len() != 1 {
-    panic("Matches to (" + notes.join(", ") + ") should be one but are " + str(notes.len()))
+    panic(str(notes.len()) + " notes match the xlink query " + repr(sink.named()) + ", but xlink requires exactly 1 match.")
   }
   return link(metadata-label(notes.first()), body)
 })
