@@ -1,1 +1,3 @@
-#import "basalt.typ": note, xlink, note-label, note-query, note-label-query, note-meta, note-anchor
+#import "vault.typ": new-vault
+#import "xlink.typ": xlink
+#import "note.typ": as-branch
