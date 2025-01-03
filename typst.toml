@@ -1,6 +1,6 @@
 [package]
 name = "basalt-lib"
-version = "0.1.0"
+version = "1.0.0"
 entrypoint = "src/exports.typ"
 authors = ["Gabriel Talbert Bunt"]
 license = "AGPL"
@@ -9,5 +9,6 @@ repository = "https://github.com/GabrielDTB/basalt-lib"
 keywords = [
   "basalt",
   "knowledge-management",
-  "library",
+  "notes",
+  "notetaking",
 ]
