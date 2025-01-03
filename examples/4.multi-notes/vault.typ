@@ -5,7 +5,7 @@
   note-paths: csv("note-list.csv").flatten(),
   include-from-vault: path => include path,
   formatters: (
-    (body, meta: (:), root: true) => {
+    (body, root: true, ..rest) => {
       if not root {
         return body
       }
