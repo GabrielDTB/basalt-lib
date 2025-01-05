@@ -1,4 +1,4 @@
-#import "@local/basalt-lib:1.0.0": new-vault, xlink
+#import "@local/basalt-lib:0.0.0": new-vault, xlink
 
 #let vault = new-vault(
   // Both of these arguments are required because

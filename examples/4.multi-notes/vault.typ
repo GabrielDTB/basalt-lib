@@ -1,5 +1,5 @@
 // Notice the new as-branch import.
-#import "@local/basalt-lib:1.0.0": new-vault, xlink, as-branch
+#import "@local/basalt-lib:0.0.0": new-vault, xlink, as-branch
 
 #let vault = new-vault(
   note-paths: csv("note-list.csv").flatten(),

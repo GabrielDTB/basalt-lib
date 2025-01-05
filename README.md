@@ -6,7 +6,7 @@ To start off, create a `.typ` file that will hold your vault.
 Let's call it `vault.typ`.
 
 ```typ
-#import "@local/basalt-lib:1.0.0": new-vault, xlink, as-branch
+#import "@local/basalt-lib:0.0.0": new-vault, xlink, as-branch
 
 #let vault = new-vault(
   note-paths: (),
@@ -32,7 +32,7 @@ Insightful note content...
 ```
 
 ```typ
-#import "@local/basalt-lib:1.0.0": new-vault, xlink, as-branch
+#import "@local/basalt-lib:0.0.0": new-vault, xlink, as-branch
 
 #let vault = new-vault(
   note-paths: (
@@ -74,7 +74,7 @@ To make it easier to track your notes,
 you may want to change how the `note-paths` are added to your vault.
 
 ```typ
-#import "@local/basalt-lib:1.0.0": new-vault, xlink, as-branch
+#import "@local/basalt-lib:0.0.0": new-vault, xlink, as-branch
 
 #let vault = new-vault(
   note-paths: csv("note-paths.csv").flatten(),
@@ -98,7 +98,7 @@ creating tons of redundancy and reducing composability,
 you can define vault-wide formatters.
 
 ```typ
-#import "@local/basalt-lib:1.0.0": new-vault, xlink, as-branch
+#import "@local/basalt-lib:0.0.0": new-vault, xlink, as-branch
 
 #let vault = new-vault(
   note-paths: csv("note-paths.csv").flatten(),
@@ -121,7 +121,7 @@ You can use `meta` and `root` to determine what formatting rules are appropriate
 For example, you likely won't want to affect document layout if the current note is a branch being included in another note.
 
 ```typ
-#import "@local/basalt-lib:1.0.0": new-vault, xlink, as-branch
+#import "@local/basalt-lib:0.0.0": new-vault, xlink, as-branch
 
 #let vault = new-vault(
   note-paths: csv("note-paths.csv").flatten(),
