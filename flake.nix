@@ -18,6 +18,8 @@
           buildInputs = [
             typst
             tinymist
+            sd
+            ripgrep
           ];
         };
       }
