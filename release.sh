@@ -5,6 +5,13 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
+for cmd in rg sd; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo "Error: Required command '$cmd' not found"
+        exit 1
+    fi
+done
+
 VERSION="$1"
 
 if ! echo "$VERSION" | rg "^[0-9]+\.[0-9]+\.[0-9]+$" >/dev/null 2>&1; then
