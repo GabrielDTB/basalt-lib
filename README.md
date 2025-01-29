@@ -42,7 +42,7 @@ Insightful note content...
 )
 ```
 
-Note that the `name: "note1"` argument to `new-note`.
+Notice the `name: "note1"` argument to `new-note`.
 `name` is completely arbitrary, but this is how you attach metadata to a note which Basalt can see.
 You could choose to attach any metadata you want: `creation-date`, `category`, `uuid`, etc.
 
