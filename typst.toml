@@ -1,6 +1,6 @@
 [package]
 name = "basalt-lib"
-version = "1.0.0"
+version = "0.0.0"
 entrypoint = "src/exports.typ"
 authors = ["Gabriel Talbert Bunt"]
 license = "AGPL-3.0-only"

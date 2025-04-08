@@ -1,4 +1,3 @@
-
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <version>"
     echo "Example: $0 1.0.0"
