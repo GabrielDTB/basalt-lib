@@ -3,7 +3,7 @@
 #import "note.typ": matching-note, get-notes
 
 #let xlink(body, ..meta) = {
-  return id-metadata(tag("xlink"), (meta.named(), body))
+  return id-metadata(tag("xlink"), (meta, body))
 }
 
 #let resolve-xlink(include-from-vault, note-paths, body, target) = {

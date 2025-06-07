@@ -6,7 +6,7 @@
     return body
   }
 
-  show: formatters.first().with(..args.named())
+  show: formatters.first().with(..args)
   apply-formatters(formatters.slice(1), body, ..args)
 }
 
@@ -30,8 +30,8 @@
   return (
     new-note: (body, ..meta) => new-root(
       body,
+      meta: meta,
       formatter: formatter,
-      meta: meta.named()
     ),
   )
 }

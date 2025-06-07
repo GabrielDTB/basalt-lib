@@ -21,9 +21,13 @@
 }
 
 #let matching-note(query, note) = {
-  let meta = note.meta
-  return query.keys().all(qkey => {
-    meta.keys().contains(qkey) and meta.at(qkey) == query.at(qkey)
+  let (qnamed, mnamed) = (query.named(), note.meta.named())
+  let (qpos, mpos) = (query.pos(), note.meta.pos())
+  
+  return qnamed.keys().all(qkey => {
+    mnamed.keys().contains(qkey) and mnamed.at(qkey) == qnamed.at(qkey)
+  }) and qpos.all(qval => {
+    mpos.contains(qval)
   })
 }
 
