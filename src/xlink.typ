@@ -3,7 +3,10 @@
 #import "metadata-with-id.typ": get-metadata, id-metadata, metadata-with-id
 #import "note.typ": matching-note, get-notes
 
-#let xlink(body, ..meta) = {
+#let xlink(..args) = {
+  let body = args.pos().last()
+  let meta = arguments(..args.named(), ..args.pos().slice(0, -1))
+
   return id-metadata(tag("xlink"), (meta, body))
 }
 

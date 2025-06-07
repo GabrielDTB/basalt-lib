@@ -37,11 +37,16 @@
   )
 
   return (
-    new-note: (body, ..meta) => make-note(
-      root: true,
-      meta: meta,
-      formatter: formatter,
-      body: body,
-    ),
+    new-note: (..args) => {
+      let body = args.pos().last()
+      let meta = arguments(..args.named(), ..args.pos().slice(0, -1))
+
+      return make-note(
+        root: true,
+        meta: meta,
+        formatter: formatter,
+        body: body,
+      )
+    },
   )
 }
