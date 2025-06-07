@@ -14,9 +14,13 @@
   ) = {
     if type(arg) != arg-type {
       panic(
-        arg-name + " is a required argument for " + repr(func) + " of type " + repr(arg-type) + "." +
+        "`" + arg-name + "`" +
+        " is a required argument for `" + repr(func) + "`" +
+        " of type `" + repr(arg-type) + "`." +
+        " Got instead `" + repr(arg) + "`" +
+        " of type `" + repr(type(arg)) + "`." +
         if type(hint) == str {
-          "\nHint: " + hint
+          " Hint: " + hint
         } else {
           ""
         }
