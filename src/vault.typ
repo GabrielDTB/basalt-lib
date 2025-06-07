@@ -1,6 +1,6 @@
 #import "error-handling.typ": check-required-argument
 #import "xlink.typ": format-xlinks
-#import "note.typ": new-root
+#import "note.typ": make-note
 
 #let apply-formatters(formatters, body, ..args) = {
   check-required-argument(apply-formatters, formatters, "formatters", array)
@@ -37,10 +37,11 @@
   )
 
   return (
-    new-note: (body, ..meta) => new-root(
-      body,
+    new-note: (body, ..meta) => make-note(
+      root: true,
       meta: meta,
       formatter: formatter,
+      body: body,
     ),
   )
 }

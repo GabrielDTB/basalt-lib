@@ -38,44 +38,41 @@
   })
 }
 
-#let new-root(
-  formatter: (),
-  meta: (:),
-  body,
+#let make-note(
+  root: bool,
+  meta: arguments,
+  formatter: function,
+  body: content,
 ) = {
-  let formatter = formatter.with(meta: meta)
-  let note-label = label(repr(meta))
+  check-required-argument(make-note, root, "root", bool)
+  check-required-argument(make-note, meta, "meta", arguments)
+  check-required-argument(make-note, formatter, "formatter", function)
+  check-required-argument(make-note, body, "body", content)
 
-  let inner-meta = id-metadata(
-    tag("note"),
-    (
-      meta: meta,
-      body: none,
-    )
+  show: formatter.with(
+    root: root,
+    meta: meta,
   )
-  let outer-meta = id-metadata(
-    tag("note"),
-    (
-      meta: meta,
-      body: {
-        show: formatter.with(root: false)
-        [
-          #inner-meta
-          #note-label
-        ]
-        body
-      },
-    ),
-  )
-
-  show: formatter.with(root: true)
   [
-    #outer-meta
-    #note-label
+    #id-metadata(
+      tag("note"),
+      (
+        meta: meta,
+        body: make-note.with(
+          root: root,
+          meta: meta,
+          formatter: formatter,
+          body: body,
+        )
+      ),
+    )
+    #label(repr(meta))
   ]
   body
 }
 
-#let as-branch(content) = {
-  return get-notes(content).first().body
+#let as-branch(body) = {
+  check-required-argument(as-branch, body, "body", content)
+
+  return (get-notes(body).first().body)(root: false)
 }
