@@ -1,6 +1,9 @@
+#import "error-handling.typ": check-required-argument
 #import "tag.typ": tag 
 
-#let get-metadata(content) = {
+#let get-metadata(body) = {
+  check-required-argument(get-metadata, body, "body", content)
+
   let helper(content) = {
     let rep = repr(content)
     // Probably missing cases.
@@ -17,7 +20,7 @@
     }
   }
 
-  return (content,).map(
+  return (body,).map(
     helper
   ).flatten().filter(it => {
     it != none
@@ -31,9 +34,11 @@
   ))
 }
 
-#let metadata-with-id(content) = {
-  let rep = repr(content)
-  let val = content.value
+#let metadata-with-id(body) = {
+  check-required-argument(metadata-with-id, body, "body", content)
+
+  let rep = repr(body)
+  let val = body.value
   return {
     rep.starts-with("metadata")
   } and {
@@ -47,9 +52,11 @@
   }
 }
 
-#let get-metadata-with-id(content) = {
+#let get-metadata-with-id(body) = {
+  check-required-argument(get-metadata-with-id, body, "body", content)
+
   return get-metadata(
-    content
+    body
   ).filter(
     metadata-with-id
   ).map(metadata => {

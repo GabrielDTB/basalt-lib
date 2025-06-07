@@ -1,7 +1,11 @@
+#import "error-handling.typ": check-required-argument
 #import "xlink.typ": format-xlinks
 #import "note.typ": new-root
 
 #let apply-formatters(formatters, body, ..args) = {
+  check-required-argument(apply-formatters, formatters, "formatters", array)
+  check-required-argument(apply-formatters, body, "body", content)
+
   if formatters.len() == 0 {
     return body
   }
@@ -11,21 +15,26 @@
 }
 
 #let new-vault(
-  note-paths: (),
-  formatters: (),
-  include-from-vault: none,
+  note-paths: array,
+  formatters: array,
+  include-from-vault: function,
 ) = {
-  if include-from-vault == none {
-    panic("include-from-vault is a required argument to " + repr(new-vault) + ". Add it as `path => include path`")
-  }
-  if type(include-from-vault) != function {
-    panic("include-from-vault must be a function, specifically `path => include path`")
-  }
+  check-required-argument(new-vault, note-paths, "note-paths", array)
+  check-required-argument(new-vault, formatters, "formatters", array)
+  check-required-argument(
+    new-vault,
+    include-from-vault,
+    "include-from-vault",
+    function,
+    hint: "add it as `path => include path`",
+  )
 
-  let formatter = apply-formatters.with((
-    formatters,
-    format-xlinks.with(include-from-vault, note-paths),
-  ).flatten())
+  let formatter = apply-formatters.with(
+    (
+      formatters,
+      format-xlinks.with(include-from-vault, note-paths),
+    ).flatten()
+  )
 
   return (
     new-note: (body, ..meta) => new-root(

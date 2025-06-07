@@ -1,9 +1,12 @@
+#import "error-handling.typ": check-required-argument
 #import "metadata-with-id.typ": get-metadata, id-metadata, metadata-with-id
 #import "tag.typ": tag
 
-#let get-notes(content) = {
+#let get-notes(body) = {
+  check-required-argument(get-notes, body, "body", content)
+
   let notes = get-metadata(
-    content
+    body
   ).filter(
     metadata-with-id
   ).map(metadata => {
@@ -15,12 +18,16 @@
   })
 
   if notes.len() == 0 {
-    panic(repr(get-notes) + " called on file with no note metas:\n" + repr(content))
+    panic(repr(get-notes) + " called on file with no note metas:\n" + repr(body))
   }
+
   return notes
 }
 
 #let matching-note(query, note) = {
+  check-required-argument(matching-note, query, "query", arguments)
+  check-required-argument(matching-note, note, "note", dictionary)
+
   let (qnamed, mnamed) = (query.named(), note.meta.named())
   let (qpos, mpos) = (query.pos(), note.meta.pos())
   
