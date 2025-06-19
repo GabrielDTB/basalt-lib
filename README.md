@@ -45,6 +45,7 @@ Insightful note content...
 Notice the `name: "note1"` argument to `new-note`.
 `name` is completely arbitrary, but this is how you attach metadata to a note which Basalt can see.
 You could choose to attach any metadata you want: `creation-date`, `category`, `uuid`, etc.
+You can also attach unnamed metadata to your note (eg. a dictionary, or a string).
 
 You can compile and view `note.typ` now, and it will look about as expected.
 All we've really done so far is write a bunch of extra code to display one file.
